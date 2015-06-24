@@ -5,8 +5,53 @@
 
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className){
-  // your code here
+  // your code her
+
+  //empty variable
+  var results = [];
+  var body = document.body
+
+  //if current (body's) level's classes match the targetclassName, push to empty array
+  if ($('body').hasClass(className)) {
+  	results.push(body); //push the body element into results
+  	console.log(results)
+  }
+  //search if current level has child node, if yes then dig deeper
+  function digDeep(val) {
+  	for (var i = 0; i < val.childNodes.length; i++) {
+  		//check to see if childnode has getattrbute function at all ..use sub
+
+
+  		//if yout current level has a class name that matches param, then push val into the array
+  		if (val.getAttribute('class') === className) {
+  			results.push(val)
+  			}
+  		if (val.childNodes[i].hasChildNodes) {
+  				digDeep(val.childNodes[i])
+  		}
+  	};
+  }
+  digDeep(body) //else {return results;}
+	//console.log(results)
+  return results;
+ 
+
 };
+
+
+//look at current level, loop thru to find target class
+	//if trget class found, push to array
+//look thru current level to see if it has child nodes
+	//if yes, dig deeper
+
+
+//what does getElementsByClassName do?
+//search thru body element, and returns elements w the argument class
+//returns an array like object
+//search thru dom to find all elements w targetclass
+//
+
+
 
 // Object.keys
 // search the HTML and find somethign by class classNamelike like the traverse-DOM w buttons from twittler

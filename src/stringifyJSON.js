@@ -61,12 +61,8 @@ var stringifyJSON = function(obj) {
 		}
       return res + ']';
 	} 
-	//testing if empty object
-	// if (!Array.isArray(obj)) {
-	// 	return "{}";
- //  	//console.log("hey")
-	// }
-	// testing if not empty object
+
+	// testing if object literal
 	if (toString.call(obj) === '[object Object]') {
     var tmp = [];
     for (var k in obj) {
@@ -80,10 +76,7 @@ var stringifyJSON = function(obj) {
 
     return '{' + tmp.join(',') + '}';
   }
-	//testing if obj has undefined values (falsy): loop thru the obj and check if any obj[key]===undefined, then return '{}'
-	// if () {
 
-	// }
       
 };
 
