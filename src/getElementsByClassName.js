@@ -14,6 +14,7 @@ var getElementsByClassName = function(className){
   //if current (body's) level's classes match the targetclassName, push to empty array
   if ($('body').hasClass(className)) {
   	results.push(body); //push the body element into results
+  
   	console.log(results)
   }
   //search if current level has child node, if yes then dig deeper
@@ -23,9 +24,11 @@ var getElementsByClassName = function(className){
 
 
   		//if yout current level has a class name that matches param, then push val into the array
-  		if (val.getAttribute('class') === className) {
-  			results.push(val)
-  			}
+  		if ($(val.childNodes[i]).hasClass(className)) {
+  			results.push(val.childNodes[i]);
+  			
+  		}
+  		//if your current level has childnides then recurse
   		if (val.childNodes[i].hasChildNodes) {
   				digDeep(val.childNodes[i])
   		}
@@ -37,6 +40,19 @@ var getElementsByClassName = function(className){
  
 
 };
+
+
+
+// var getElementsByClassName = function(className, target){
+// 	var results = [];
+// 	function scan(target) {
+// 		_.contains(target.classList, className) {results.push(target);}
+// 		_.each(target.childNodes, scan)
+// 	}
+// 	scan(document.body);
+// };
+
+
 
 
 //look at current level, loop thru to find target class
