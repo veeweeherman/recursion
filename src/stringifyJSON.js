@@ -62,19 +62,28 @@ var stringifyJSON = function(obj) {
       return res + ']';
 	} 
 	//testing if empty object
-	if (!Array.isArray(obj)) {
-		return "{}";
-	}
+	// if (!Array.isArray(obj)) {
+	// 	return "{}";
+ //  	//console.log("hey")
+	// }
 	// testing if not empty object
 	if (toString.call(obj) === '[object Object]') {
     var tmp = [];
     for (var k in obj) {
-      if (obj.hasOwnProperty(k))
-      tmp.push(stringifyJSON(k) + ': ' + stringifyJSON(value[k]));
+      if (obj.hasOwnProperty(k)) {
+      	tmp.push(stringifyJSON(k) + ':' + stringifyJSON(obj[k])); 
+      }
+      if (obj[k] === undefined) {
+      	return '{}';
+      }
   	}
+
     return '{' + tmp.join(',') + '}';
   }
-		
+	//testing if obj has undefined values (falsy): loop thru the obj and check if any obj[key]===undefined, then return '{}'
+	// if () {
+
+	// }
       
 };
 
